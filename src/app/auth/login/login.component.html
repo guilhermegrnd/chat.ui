@@ -1,0 +1,68 @@
+<div class='full-screen-container'>
+    <div class='login-container'>
+        <h2 class='login-title'>Log In</h2>
+        <div>
+            <form class='login-form' (ngSubmit)='handleSubmit($event)' #myForm='ngForm'>
+                <div class='login-input-group'>
+                    <input 
+                        name='username'
+                        id='username'
+                        type='text'
+                        placeholder='Username'
+                        [(ngModel)]='form.username'
+                        required 
+                        #username='ngModel'
+                    />
+                </div>
+                <div *ngIf='username.invalid && username.touched' class='login-input-group error'>
+                    <input
+                        disabled
+                        name='errorusername'
+                        id='errorusername'
+                        type='text'
+                        value='Username is Required'
+                    />
+                </div>
+                <div class='login-input-group'>
+                    <input
+                        name='password'
+                        id='password'
+                        type='password'
+                        placeholder='Password'
+                        [(ngModel)]='form.password'
+                        required
+                        #password='ngModel'
+                    />
+                </div>
+                <div *ngIf='password.invalid && password.touched' class='login-input-group error'>
+                    <input
+                        disabled
+                        name='errorpassword'
+                        id='errorpassword'
+                        type='text'
+                        value='Password is Required'
+                    />
+                </div>
+                <div class='login-input-group error success' *ngIf='form.message'>
+                    <input
+                        disabled
+                        name='error'
+                        id='error'
+                        type='text'
+                        value='{{form.message}}'
+                    />
+                </div>
+                <button 
+                    [disabled]='myForm.form.invalid' 
+                    type='submit' 
+                    class='login-button'
+                >
+                    Sign In
+                </button>
+            </form>
+            <div class='login-singup-button'>
+                <span>Need an account? <a routerLink="/signup">Sign Up</a></span>
+            </div>
+        </div>
+    </div>
+</div>

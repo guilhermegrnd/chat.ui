@@ -1,0 +1,8 @@
+<p>home works!</p>
+<p>Token: {{token}}</p>
+
+<h2>CHATS</h2>
+<ul>
+    <li *ngFor="let user of userChats; let i = index">{{user.name}}</li>
+</ul>
+<button type='button' (click)="logout()">Log Out</button>

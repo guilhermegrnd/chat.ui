@@ -1,0 +1,88 @@
+<div class='full-screen-container'>
+    <div class='login-container'>
+        <h2 class='login-title'>Sign Up</h2>
+        <div>
+            <form class='login-form' (ngSubmit)='handleSubmit($event)' #myForm='ngForm'>
+                <div class='login-input-group'>
+                    <input 
+                        name='username'
+                        id='username'
+                        type='text'
+                        placeholder='Username'
+                        [(ngModel)]='form.username'
+                        required 
+                        #username='ngModel'
+                    />
+                </div>
+                <div *ngIf='username.invalid && username.touched' class='login-input-group error'>
+                    <input
+                        disabled
+                        name='errorusername'
+                        id='errorusername'
+                        type='text'
+                        value='Username is Required'
+                    />
+                </div>
+                <div class='login-input-group'>
+                    <input
+                        name='password'
+                        id='password'
+                        type='password'
+                        placeholder='Password'
+                        [(ngModel)]='form.password'
+                        required
+                        #password='ngModel'
+                    />
+                </div>
+                <div *ngIf='password.invalid && password.touched' class='login-input-group error'>
+                    <input
+                        disabled
+                        name='errorpassword'
+                        id='errorpassword'
+                        type='text'
+                        value='Password is Required'
+                    />
+                </div>
+                <div class='login-input-group'>
+                    <input
+                        name='passwordConfirmation'
+                        id='passwordConfirmation'
+                        type='password'
+                        placeholder='Password Confirmation'
+                        [(ngModel)]='form.passwordConfirmation'
+                        required
+                        #passwordConfirmation='ngModel'
+                    />
+                </div>
+                <div *ngIf='passwordConfirmation.invalid && passwordConfirmation.touched' class='login-input-group error'>
+                    <input
+                        disabled
+                        name='errorpasswordconfirmation'
+                        id='errorpasswordconfirmation'
+                        type='text'
+                        value='Password is Required'
+                    />
+                </div>
+                <div class='login-input-group error success' *ngIf='form.message'>
+                    <input
+                        disabled
+                        name='error'
+                        id='error'
+                        type='text'
+                        value='{{form.message}}'
+                    />
+                </div>
+                <button 
+                    [disabled]='myForm.form.invalid' 
+                    type='submit' 
+                    class='login-button'
+                >
+                    Sign Up
+                </button>
+            </form>
+            <div class='login-singup-button'>
+                <span>Already have an account? <a routerLink="/login">Sign In</a></span>
+            </div>
+        </div>
+    </div>
+</div>
