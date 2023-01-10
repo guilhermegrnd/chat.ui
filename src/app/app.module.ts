@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { LoginModule } from './auth/login/login.module';
 import { SignupModule } from './auth/signup/signup.module';
 import { HomeModule } from './pages/home/home.module';
+import { ChatComponent } from './components/chat/chat.component';
+import { ComponentsModule } from './components/components.module';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,7 @@ import { HomeModule } from './pages/home/home.module';
     BrowserModule,
     LoginModule,
     SignupModule,
-    HomeModule,
+    ComponentsModule,
     AppRoutingModule
   ],
   providers: [],

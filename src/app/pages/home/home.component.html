@@ -1,8 +1,9 @@
-<p>home works!</p>
-<p>Token: {{token}}</p>
-
-<h2>CHATS</h2>
-<ul>
-    <li *ngFor="let user of userChats; let i = index">{{user.name}}</li>
-</ul>
-<button type='button' (click)="logout()">Log Out</button>
+<div class="container">
+  <aside>
+    <div>
+      <span class="logo">CHAT<button type='button' (click)="logout()">Log Out</button></span>
+    </div>
+    <app-contacts (chatSwitch)="changeChat($event)"></app-contacts>
+  </aside>
+  <app-chat style="flex: 1;" [currentChatUser]='currentChatUser'></app-chat>
+</div>

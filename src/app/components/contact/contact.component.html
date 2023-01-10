@@ -1,0 +1,11 @@
+<div class="list-wrap">
+    <div class="list" *ngFor="let user of userChats; let i = index" (click)="changeUser(user)">
+        <img src="{{user.image}}" alt="" />
+        <div class="info">
+            <span class="user">{{user.name}}</span>
+            <span class="text">Hi! :)</span>
+        </div>
+        <span class="count">20</span>
+        <span class="time">now</span>
+    </div>
+</div>
