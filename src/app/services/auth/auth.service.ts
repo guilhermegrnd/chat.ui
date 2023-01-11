@@ -4,6 +4,7 @@ import { Token } from 'src/app/types/Token';
 import { FetchService } from '../fetch/fetch.service';
 import { LocalStorageService } from '../localStorage/local-storage.service';
 import { environment } from '../../../environments/environment';
+import { User } from 'src/app/types/User';
 
 @Injectable({
   providedIn: 'root'
@@ -75,11 +76,25 @@ export class AuthService {
     }
     catch(e)
     {
-      console.log('logouterror')
       this.localStorage.removeLocalStorage('token')
 
       return true
     }
+  }
+
+  public async getLoggedUserData() {
+
+    const json = this.localStorage.getLocalStorage<Token>('token')
+
+    const request = await this.fetchService.fetchData<DefaultRequest<User>>(`${environment.apiBaseUrl}/api/v1/users/loggeduserdata`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${json?.token}`
+      }
+    })
+    
+    return request
   }
 
   public isUserAuthenticated() {

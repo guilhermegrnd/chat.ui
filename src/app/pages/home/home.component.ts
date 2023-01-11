@@ -13,7 +13,7 @@ import { User } from 'src/app/types/User';
 })
 export class HomeComponent implements OnInit {
 
-  
+  loggedUser: User | undefined
   currentChatUser: User | undefined
 
   constructor(private router: Router, private localStorage: LocalStorageService, private authService: AuthService, private chatService: ChatService) { 
@@ -25,6 +25,7 @@ export class HomeComponent implements OnInit {
 
   async ngOnInit() {
     // this.userChats = (await this.chatService.getChats()).data
+    this.loggedUser = (await this.authService.getLoggedUserData()).data
   }
 
   async logout() {

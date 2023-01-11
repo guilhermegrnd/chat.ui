@@ -3,15 +3,16 @@
   overflow: auto;
   //list
   .list {
-    border-bottom: 1px solid #ccc;
-    background: #fff;
+    border-bottom: 1px solid var(--prdark);
+    // background: #fff;
     display: flex;
     align-items: center;
     padding: 5px;
     height: 70px;
+    color: var(--prdark);
     cursor: pointer;
     &:hover, &.active {
-      background: #F4F7F9;
+      background: var(--sclight);
     }
     img {
       border-radius: 50%;
@@ -48,7 +49,7 @@
       height: 20px;
       border-radius: 50%;
       text-align: center;
-      color: #000;
+      color: var(--prdark);
     }
   }
 }

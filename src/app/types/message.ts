@@ -7,5 +7,5 @@ export interface Message {
     text: string
     image?: string
     reply?: string
-    createAt: number
+    createAt: Date
 }

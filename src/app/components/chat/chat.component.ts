@@ -12,40 +12,40 @@ export class ChatComponent implements OnInit {
 
   @Input() currentChatUser: User | undefined
 
-  isLoading = false
+  isProcessing:boolean
   messages: Message[]
   messageToSend: Message | undefined
 
   constructor(private chatService: ChatService) { 
     this.messages = []
+    this.isProcessing = false
   }
 
   async ngOnInit() {
-    
   }
 
   async ngOnChanges(changes: SimpleChanges) {
-    console.log('changes',changes)
-    if(!this.isEqualObjects(changes['currentChatUser'].previousValue, this.currentChatUser)) {
-      this.messages = (await this.chatService.getMessages(this.currentChatUser?.id!))!.data
-      console.log('messages',this.messages)
-    }
+    if(!this.isEqualObjects(changes['currentChatUser'].previousValue, this.currentChatUser)) this.messages = (await this.chatService.getMessages(this.currentChatUser?.id!))!.data
   }
 
-  onEnter(event: Event): void {
+  async onEnter(event: Event) {
+    this.isProcessing = true
     const input = event.target as HTMLInputElement;
     
-    const request = this.chatService.sendMessage(this.currentChatUser?.id!,input.value)
+    const request = await this.chatService.sendMessage(this.currentChatUser?.id!,input.value)
+    if(request.success) this.messages.push(request.data)
 
-    
+    input.value = ''
+    input.focus()
+    this.isProcessing = false
   }
 
   private isEqualObjects(x:any, y:any): boolean {
-    const ok = Object.keys, tx = typeof x, ty = typeof y;
+    const ok = Object.keys, tx = typeof x, ty = typeof y
     return x && y && tx === 'object' && tx === ty ? (
       ok(x).length === ok(y).length &&
         ok(x).every(key => this.isEqualObjects(x[key], y[key]))
-    ) : (x === y);
+    ) : (x === y)
   }
 
 }
