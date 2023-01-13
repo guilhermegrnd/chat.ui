@@ -23,6 +23,7 @@
     --prdark: #424242;
     --subdark: #9e9e9e;
     --scdark: #5e60ce;
+    --light: #dadada;
 }
 
 a {
@@ -32,4 +33,11 @@ a {
 html,body {
     height: 100vh;
     width: 100vw;
+    background-color: darkslateblue;
+}
+
+.full-container {
+    height: 100%;
+    width: 100%;
+    display: inline-block;
 }

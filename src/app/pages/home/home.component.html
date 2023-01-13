@@ -1,9 +1,11 @@
-<div class="container">
-  <aside>
-    <div>
-      <span class="logo" *ngIf="loggedUser !== undefined"><img src="{{loggedUser.image}}" alt="">{{loggedUser.name}}<button type='button' (click)="logout()">Log Out</button></span>
-    </div>
-    <app-contacts (chatSwitch)="changeChat($event)"></app-contacts>
-  </aside>
-  <app-chat style="flex: 1;" [currentChatUser]='currentChatUser'></app-chat>
+<div class="container-flex">
+  <div class="container">
+    <aside>
+      <div>
+        <span class="logo" *ngIf="loggedUser !== undefined"><img src="{{loggedUser.image}}" alt="">{{loggedUser.name}}<button type='button' (click)="logout()">Log Out</button></span>
+      </div>
+      <app-contacts (chatSwitch)="changeChat($event)"></app-contacts>
+    </aside>
+    <app-chat style="flex: 1;" [currentChatUser]='currentChatUser'></app-chat>
+  </div>
 </div>
